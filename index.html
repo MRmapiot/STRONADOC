@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOC – Strona Główna</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --g-darkest: #0d2e0d;
+    --g-dark: #1a4a1a;
+    --g-mid: #2d7a2d;
+    --g-light: #4a9a4a;
+    --g-pale: #e8f5e8;
+    --gold: #c8a832;
+    --gold-light: #e8c84a;
+    --gold-dark: #8a7020;
+    --cream: #f5f0e8;
+    --bg: #f0ece4;
+    --text: #1a1a1a;
+    --text-mid: #444;
+    --text-light: #888;
+    --white: #fff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Source Sans 3',sans-serif; background:var(--bg); color:var(--text); display:flex; flex-direction:column; min-height:100vh; }
+
+  /* NAV */
+  .topbar { background:var(--g-darkest); border-bottom:3px solid var(--gold); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:54px; position:sticky; top:0; z-index:100; }
+  .topbar-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .topbar-logo { width:38px; height:38px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Oswald',sans-serif; font-size:11px; font-weight:700; color:var(--g-darkest); letter-spacing:1px; border:2px solid var(--gold-dark); flex-shrink:0; }
+  .topbar-name { font-family:'Oswald',sans-serif; font-size:15px; font-weight:600; color:#fff; letter-spacing:1px; text-transform:uppercase; }
+  .topbar-nav { display:flex; list-style:none; }
+  .topbar-nav a { display:block; padding:0 1rem; height:54px; line-height:54px; color:rgba(255,255,255,.65); text-decoration:none; font-size:13px; font-weight:400; text-transform:uppercase; letter-spacing:.8px; border-bottom:3px solid transparent; margin-bottom:-3px; transition:color .2s,border-color .2s; }
+  .topbar-nav a:hover, .topbar-nav a.active { color:#fff; border-bottom-color:var(--gold); }
+
+  /* HERO */
+  .hero { background:var(--g-dark); background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(0,0,0,.07) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(0,0,0,.07) 40px); padding:4rem 2rem 3rem; text-align:center; position:relative; overflow:hidden; border-bottom:4px solid var(--gold-dark); }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(45,122,45,.3) 0%,transparent 70%); pointer-events:none; }
+  .hero-seal { width:150px; height:150px; border-radius:50%; background:var(--g-darkest); border:5px solid var(--gold); box-shadow:0 0 0 3px var(--g-dark),0 0 0 5px var(--gold-dark),0 8px 40px rgba(0,0,0,.5); display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem; position:relative; }
+  .hero-seal-inner { width:114px; height:114px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; flex-direction:column; border:2px solid var(--gold-dark); }
+  .hero-seal-emoji { font-size:40px; line-height:1; }
+  .hero-seal-text { font-family:'Oswald',sans-serif; font-size:9px; font-weight:700; color:var(--g-darkest); letter-spacing:2px; margin-top:3px; }
+  .hero-seal-ring { position:absolute; inset:6px; border-radius:50%; border:1.5px dashed rgba(200,168,50,.5); animation:spin 30s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .hero-ring2 { position:absolute; inset:14px; border-radius:50%; border:1px dotted rgba(200,168,50,.25); animation:spin 18s linear infinite reverse; }
+  .hero h1 { font-family:'Oswald',sans-serif; font-size:40px; font-weight:700; color:#fff; text-transform:uppercase; letter-spacing:3px; line-height:1.1; position:relative; }
+  .hero h1 span { color:var(--gold); }
+  .hero-sub { font-size:13px; color:rgba(255,255,255,.5); text-transform:uppercase; letter-spacing:2px; margin-top:6px; position:relative; }
+  .hero-divider { width:80px; height:2px; background:linear-gradient(to right,transparent,var(--gold),transparent); margin:1.2rem auto; }
+  .hero-tagline { font-size:15px; color:rgba(255,255,255,.7); font-style:italic; letter-spacing:.5px; position:relative; }
+  .hero-btns { display:flex; gap:12px; justify-content:center; margin-top:2rem; position:relative; flex-wrap:wrap; }
+  .btn-primary { background:var(--gold); color:var(--g-darkest); font-family:'Oswald',sans-serif; font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:1px; padding:10px 28px; border-radius:4px; text-decoration:none; border:none; cursor:pointer; transition:background .2s,transform .15s; }
+  .btn-primary:hover { background:var(--gold-light); transform:translateY(-1px); }
+  .btn-outline { background:transparent; color:#fff; font-family:'Oswald',sans-serif; font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:1px; padding:10px 28px; border-radius:4px; text-decoration:none; border:1.5px solid rgba(255,255,255,.35); cursor:pointer; transition:border-color .2s,transform .15s; }
+  .btn-outline:hover { border-color:#fff; transform:translateY(-1px); }
+
+  /* LAYOUT */
+  .layout { max-width:960px; margin:0 auto; padding:3rem 1.5rem; }
+
+  /* STAT STRIP */
+  .stat-strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1px; background:var(--gold-dark); border:1px solid var(--gold-dark); border-radius:8px; overflow:hidden; margin-bottom:3rem; }
+  .stat-item { background:var(--g-darkest); padding:1.2rem 1.5rem; text-align:center; }
+  .stat-num { font-family:'Oswald',sans-serif; font-size:32px; font-weight:700; color:var(--gold); line-height:1; }
+  .stat-label { font-size:11px; color:rgba(255,255,255,.5); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+
+  /* SECTION HEADING */
+  .sec-heading { font-family:'Oswald',sans-serif; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:3px; color:var(--g-mid); margin-bottom:1.2rem; display:flex; align-items:center; gap:10px; }
+  .sec-heading::after { content:''; flex:1; height:1px; background:linear-gradient(to right,var(--g-mid),transparent); }
+
+  /* ABOUT BLOCK */
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:3rem; }
+  @media(max-width:640px) { .about-grid { grid-template-columns:1fr; } }
+  .about-text { font-size:15px; line-height:1.75; color:var(--text-mid); }
+  .about-text p { margin-bottom:1rem; }
+  .about-text strong { color:var(--g-dark); font-weight:600; }
+  .mission-box { background:var(--g-darkest); border-radius:8px; padding:1.8rem; border-left:4px solid var(--gold); }
+  .mission-box h3 { font-family:'Oswald',sans-serif; font-size:18px; color:var(--gold); text-transform:uppercase; letter-spacing:1px; margin-bottom:.8rem; }
+  .mission-box p { font-size:14px; color:rgba(255,255,255,.7); line-height:1.7; }
+  .mission-box .quote { font-style:italic; font-size:13px; color:rgba(255,255,255,.4); margin-top:1rem; border-top:1px solid rgba(255,255,255,.1); padding-top:.8rem; }
+
+  /* CARDS */
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-bottom:3rem; }
+  .card { background:#fff; border-radius:8px; border:1px solid #e0ddd8; padding:1.5rem; text-decoration:none; color:inherit; transition:transform .2s,box-shadow .2s; display:block; }
+  .card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,.1); }
+  .card-icon { font-size:28px; margin-bottom:.8rem; }
+  .card h3 { font-family:'Oswald',sans-serif; font-size:17px; font-weight:600; color:var(--g-dark); text-transform:uppercase; letter-spacing:.5px; margin-bottom:.5rem; }
+  .card p { font-size:13px; color:var(--text-light); line-height:1.5; }
+  .card-arrow { font-size:13px; color:var(--g-mid); margin-top:.8rem; font-weight:600; }
+
+  /* FOOTER */
+  footer { background:var(--g-darkest); border-top:3px solid var(--gold-dark); padding:1.8rem 2rem; text-align:center; margin-top:auto; }
+  footer p { font-size:12px; color:rgba(255,255,255,.35); text-transform:uppercase; letter-spacing:1px; }
+
+  @media(max-width:600px) { .topbar-nav { display:none; } .hero h1 { font-size:26px; } .stat-num { font-size:24px; } }
+  .topbar-logo { position:relative; overflow:hidden; cursor:pointer; }
+  .topbar-logo-image { width:100%; height:100%; object-fit:cover; display:none; }
+  .topbar-logo.has-image .topbar-logo-image { display:block; }
+  .topbar-logo.has-image .topbar-logo-text { display:none; }
+@media(max-width:700px){ }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="topbar-brand" href="index.html">
+    <div class="topbar-logo" title="Kliknij, aby dodać własne logo (PPM usuwa)">
+  <span class="topbar-logo-text">DOC</span>
+  <img class="topbar-logo-image" alt="Logo DOC">
+</div>
+    <div class="topbar-name">Department of Corrections</div>
+  </a>
+  <ul class="topbar-nav">
+    <li><a href="index.html" class="active">Strona Główna</a></li>
+    <li><a href="rekrutacja.html">Rekrutacja</a></li>
+    <li><a href="lancuch-dowodzenia.html">Łańcuch Dowodzenia</a></li>
+    <li><a href="regulamin.html">Regulamin</a></li>
+    <li><a href="galeria.html">Galeria</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-seal">
+    <div class="hero-seal-ring"></div>
+    <div class="hero-ring2"></div>
+<div class="hero-seal-inner">
+  <img src="src/Doc3.png" alt="Logo DOC" style="width:80%; height:80%; object-fit:contain;">
+</div>
+  </div>
+  <h1>Department of <span>Corrections</span></h1>
+  <div class="hero-sub">State of San Andreas &nbsp;·&nbsp; DOC</div>
+  <div class="hero-divider"></div>
+  <div class="hero-tagline">„Porządek, Bezpieczeństwo, Resocjalizacji"</div>
+  <div class="hero-btns">
+    <a href="rekrutacja.html" class="btn-primary">Dołącz do DOC</a>
+    <a href="lancuch-dowodzenia.html" class="btn-outline">Łańcuch Dowodzenia</a>
+  </div>
+</div>
+
+<div class="layout">
+
+  <div class="stat-strip">
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Funkcjonariuszy</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Ochrona zakładu</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Zaangażowanie</div>
+    </div>
+  </div>
+
+  <div class="sec-heading">O Departamencie</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p><strong>Department of Corrections (DOC)</strong> jest instytucją penitencjarną odpowiedzialną za zarządzanie zakładem karnym w stanie San Andreas. Zapewniamy bezpieczne przetrzymywanie osadzonych, prowadzenie konwojów oraz utrzymanie porządku i bezpieczeństwa na terenie więzienia.</p>
+      <p>DOC ściśle współpracuje z innymi służbami mundurowymi Stanu San Andreas — w szczególności z Policją Los Santos (LSPD) oraz Biurem Szeryfa (LSSD), tworząc spójny system wymiaru sprawiedliwości.</p>
+      <p>Funkcjonariusze Departamentu przechodzą rygorystyczne szkolenia, by móc skutecznie reagować na incydenty więzienne, prowadzić eskorty osadzonych oraz egzekwować regulamin zakładu.</p>
+    </div>
+    <div class="mission-box">
+      <h3>Nasza Misja</h3>
+      <p>DOC zobowiązuje się do zapewnienia bezpiecznego i humanitarnego przetrzymywania osób pozbawionych wolności, ochrony personelu i społeczeństwa, oraz stwarzania warunków do resocjalizacji osadzonych.</p>
+      <p class="quote">„Dążymy do utrzymania ładu, bezpieczeństwa i dyscypliny w każdych okolicznościach, działając z profesjonalizmem i poszanowaniem prawa."</p>
+    </div>
+  </div>
+
+  <div class="sec-heading">Szybkie Linki</div>
+  <div class="cards">
+    <a href="rekrutacja.html" class="card">
+      <div class="card-icon">📋</div>
+      <h3>Rekrutacja</h3>
+      <p>Sprawdź wymagania i złóż podanie o pracę w Departamencie Więziennictwa.</p>
+      <div class="card-arrow">Aplikuj teraz →</div>
+    </a>
+    <a href="lancuch-dowodzenia.html" class="card">
+      <div class="card-icon">⭐</div>
+      <h3>Łańcuch Dowodzenia</h3>
+      <p>Poznaj strukturę hierarchiczną i stopnie służbowe obowiązujące w DOC.</p>
+      <div class="card-arrow">Zobacz stopnie →</div>
+    </a>
+    <a href="regulamin.html" class="card">
+      <div class="card-icon">📜</div>
+      <h3>Regulamin</h3>
+      <p>Zapoznaj się z zasadami i przepisami obowiązującymi funkcjonariuszy DOC.</p>
+      <div class="card-arrow">Czytaj regulamin →</div>
+    </a>
+    <a href="kontakt.html" class="card">
+      <div class="card-icon">📞</div>
+      <h3>Kontakt</h3>
+      <p>Skontaktuj się z Departamentem lub zgłoś incydent wymagający interwencji.</p>
+      <div class="card-arrow">Kontakt →</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <p>Department of Corrections &nbsp;·&nbsp; State of San Andreas &nbsp;·&nbsp; made by Richard Savino &nbsp;·&nbsp; 2026</p>
+</footer>
+
+<script>
+</script>
+</body>
+</html>
+
+
+
+
+
+

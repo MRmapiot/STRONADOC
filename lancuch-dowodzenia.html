@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOC - Łańcuch Dowodzenia</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --g-darkest:#0d2e0d; --g-dark:#1a4a1a; --g-mid:#2d7a2d;
+    --gold:#c8a832; --gold-dark:#8a7020;
+    --bg:#f0ece4; --text:#1a1a1a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Source Sans 3',sans-serif; background:var(--bg); color:var(--text); display:flex; flex-direction:column; min-height:100vh; }
+
+  .topbar { background:var(--g-darkest); border-bottom:3px solid var(--gold); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:54px; position:sticky; top:0; z-index:100; }
+  .topbar-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .topbar-logo { width:38px; height:38px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Oswald',sans-serif; font-size:11px; font-weight:700; color:var(--g-darkest); letter-spacing:1px; border:2px solid var(--gold-dark); flex-shrink:0; position:relative; overflow:hidden; cursor:pointer; }
+  .topbar-logo-image { width:100%; height:100%; object-fit:cover; display:none; }
+  .topbar-logo.has-image .topbar-logo-image { display:block; }
+  .topbar-logo.has-image .topbar-logo-text { display:none; }
+  .topbar-name { font-family:'Oswald',sans-serif; font-size:15px; font-weight:600; color:#fff; letter-spacing:1px; text-transform:uppercase; }
+  .topbar-nav { display:flex; list-style:none; }
+  .topbar-nav a { display:block; padding:0 1rem; height:54px; line-height:54px; color:rgba(255,255,255,.65); text-decoration:none; font-size:13px; text-transform:uppercase; letter-spacing:.8px; border-bottom:3px solid transparent; margin-bottom:-3px; }
+  .topbar-nav a:hover, .topbar-nav a.active { color:#fff; border-bottom-color:var(--gold); }
+
+  .page-header { background:var(--g-dark); padding:2rem; border-bottom:3px solid var(--gold-dark); }
+  .page-header-inner { max-width:1120px; margin:0 auto; }
+  .breadcrumb { font-size:12px; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:.8px; margin-bottom:.6rem; }
+  .breadcrumb a { color:rgba(255,255,255,.45); text-decoration:none; }
+  .breadcrumb span { color:var(--gold); }
+  h1 { font-family:'Oswald',sans-serif; font-size:34px; color:#fff; text-transform:uppercase; letter-spacing:2px; }
+  .sub { color:rgba(255,255,255,.66); margin-top:.35rem; }
+
+  .layout { max-width:1120px; margin:0 auto; padding:2.5rem 1.5rem; width:100%; }
+  .pyramid { display:flex; flex-direction:column; gap:1rem; }
+  .tier { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+  .staff-card { width:300px; background:#fff; border:1px solid #dfd8ce; border-radius:12px; overflow:hidden; box-shadow:0 6px 16px rgba(0,0,0,.08); }
+  .staff-card img.staff-photo { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+  .staff-body { padding:1rem; }
+  .staff-card.chief .staff-body { background:linear-gradient(135deg,#f6e8b0,#dcc26a); }
+  .staff-card.commander .staff-body { background:linear-gradient(135deg,#f1f1f1,#cbcbcb); }
+  .staff-rank { font-family:'Oswald',sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:.7px; color:#1f1f1f; }
+  .staff-name { font-size:20px; font-weight:700; margin-top:.2rem; color:#141414; }
+
+  .chief-logo-wrap { margin-top:.9rem; display:flex; align-items:center; gap:.75rem; }
+  .chief-logo {
+    width:52px; height:52px; border-radius:50%; object-fit:cover;
+    border:2px solid rgba(0,0,0,.25); background:#fff; cursor:pointer;
+  }
+  .chief-logo-note { font-size:12px; color:#333; }
+
+  footer { background:var(--g-darkest); border-top:3px solid var(--gold-dark); padding:1.8rem 2rem; text-align:center; margin-top:auto; }
+  footer p { font-size:12px; color:rgba(255,255,255,.35); text-transform:uppercase; letter-spacing:1px; }
+
+  @media(max-width:760px){ .topbar-nav{display:none;} h1{font-size:28px;} .staff-card{width:100%; max-width:360px;} }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="topbar-brand" href="index.html">
+    <div class="topbar-logo" title="Kliknij, aby dodać własne logo (PPM usuwa)">
+      <span class="topbar-logo-text">DOC</span>
+      <img class="topbar-logo-image" alt="Logo DOC">
+    </div>
+    <div class="topbar-name">Department of Corrections</div>
+  </a>
+  <ul class="topbar-nav">
+    <li><a href="index.html">Strona Główna</a></li>
+    <li><a href="rekrutacja.html">Rekrutacja</a></li>
+    <li><a href="lancuch-dowodzenia.html" class="active">Łańcuch Dowodzenia</a></li>
+    <li><a href="regulamin.html">Regulamin</a></li>
+    <li><a href="galeria.html">Galeria</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">Strona Główna</a> &rsaquo; <span>Łańcuch Dowodzenia</span></div>
+    <h1>Łańcuch Dowodzenia</h1>
+    <p class="sub">Struktura hierarchiczna jednostki</p>
+  </div>
+</div>
+
+<main class="layout">
+  <section class="pyramid">
+    <div class="tier">
+      <article class="staff-card chief">
+        <img class="staff-photo" src="img/staff-chief.png" alt="Correctional Chief - Pavel Carnage">
+        <div class="staff-body">
+          <div class="staff-rank">Correctional Chief</div>
+          <div class="staff-name">Pavel Carnage</div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="tier">
+      <article class="staff-card commander">
+        <img class="staff-photo" src="img/staff-commander1.png" alt="Correctional Commander - Richard Savino">
+        <div class="staff-body">
+          <div class="staff-rank">Correctional Commander</div>
+          <div class="staff-name">Richard Savino</div>
+        </div>
+      </article>
+      <article class="staff-card commander">
+        <img class="staff-photo" src="img/staff-commander2.png" alt="Correctional Commander - Mathew Carnage">
+        <div class="staff-body">
+          <div class="staff-rank">Correctional Commander</div>
+          <div class="staff-name">Mathew Carnage</div>
+        </div>
+      </article>
+    </div>
+
+    <div class="tier">
+      <article class="staff-card">
+        <img class="staff-photo" src="img/staff-senior.jpg" alt="Senior Correctional Officer - Wakaty">
+        <div class="staff-body">
+          <div class="staff-rank">Senior Correctional Officer</div>
+          <div class="staff-name">Wolny wakat</div>
+        </div>
+      </article>
+      <article class="staff-card">
+        <img class="staff-photo" src="img/staff-officer-john.png" alt="Correctional Officer - John Philips">
+        <div class="staff-body">
+          <div class="staff-rank">Correctional Officer</div>
+          <div class="staff-name">John Philips</div>
+        </div>
+      </article>
+      <article class="staff-card">
+        <img class="staff-photo" src="img/staff-officer-bob.png" alt="Correctional Officer - Bob Okonkwo">
+        <div class="staff-body">
+          <div class="staff-rank">Correctional Officer</div>
+          <div class="staff-name">Bob Okonkwo</div>
+        </div>
+      </article>
+    </div>
+
+    <div class="tier">
+      <article class="staff-card">
+        <img class="staff-photo" src="img/staff-officer-vacancy.jpg" alt="Correctional Officer - Wakaty">
+        <div class="staff-body">
+          <div class="staff-rank">Correctional Officer</div>
+          <div class="staff-name">Wolny wakat</div>
+        </div>
+      </article>
+      <article class="staff-card">
+        <img class="staff-photo" src="img/staff-rookie.jpg" alt="Correctional Rookie - Wakaty">
+        <div class="staff-body">
+          <div class="staff-rank">Correctional Rookie</div>
+          <div class="staff-name">Wolny wakat</div>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Department of Corrections · State of San Andreas · made by Richard Savino · 2026</p>
+</footer>
+
+<script>
+(function () {
+  const images = Array.from(document.querySelectorAll('.gallery-img'));
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const btnPrev = document.querySelector('.lightbox-prev');
+  const btnNext = document.querySelector('.lightbox-next');
+  const btnClose = document.querySelector('.lightbox-close');
+  if (!images.length || !lightbox || !lightboxImg) return;
+
+  let current = 0;
+
+  const open = (index) => {
+    current = index;
+    lightboxImg.src = images[current].src;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  };
+
+  const close = () => {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.removeAttribute('src');
+  };
+
+  const prev = () => open((current - 1 + images.length) % images.length);
+  const next = () => open((current + 1) % images.length);
+
+  images.forEach((img, index) => img.addEventListener('click', () => open(index)));
+  if (btnPrev) btnPrev.addEventListener('click', prev);
+  if (btnNext) btnNext.addEventListener('click', next);
+  if (btnClose) btnClose.addEventListener('click', close);
+
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) close();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (event.key === 'Escape') close();
+    if (event.key === 'ArrowLeft') prev();
+    if (event.key === 'ArrowRight') next();
+  });
+})();
+</script>
+
+</body>
+</html>
