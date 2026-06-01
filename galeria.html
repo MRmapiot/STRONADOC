@@ -4,67 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DOC - Galeria</title>
-  <link rel="icon" sizes="32x32" href="src/Doc3.png">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --g-darkest:#0d2e0d; --g-dark:#1a4a1a;
-    --gold:#c8a832; --gold-dark:#8a7020;
-    --bg:#f0ece4; --text:#1a1a1a;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Source Sans 3',sans-serif; background:var(--bg); color:var(--text); display:flex; flex-direction:column; min-height:100vh; }
-
-  .topbar { background:var(--g-darkest); border-bottom:3px solid var(--gold); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:54px; position:sticky; top:0; z-index:100; }
-  .topbar-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
-  .topbar-logo { width:38px; height:38px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Oswald',sans-serif; font-size:11px; font-weight:700; color:var(--g-darkest); letter-spacing:1px; border:2px solid var(--gold-dark); flex-shrink:0; position:relative; overflow:hidden; cursor:pointer; }
-  .topbar-logo-image { width:100%; height:100%; object-fit:cover; display:none; }
-  .topbar-logo.has-image .topbar-logo-image { display:block; }
-  .topbar-logo.has-image .topbar-logo-text { display:none; }
-  .topbar-name { font-family:'Oswald',sans-serif; font-size:15px; font-weight:600; color:#fff; letter-spacing:1px; text-transform:uppercase; }
-  .topbar-nav { display:flex; list-style:none; }
-  .topbar-nav a { display:block; padding:0 1rem; height:54px; line-height:54px; color:rgba(255,255,255,.65); text-decoration:none; font-size:13px; text-transform:uppercase; letter-spacing:.8px; border-bottom:3px solid transparent; margin-bottom:-3px; }
-  .topbar-nav a:hover, .topbar-nav a.active { color:#fff; border-bottom-color:var(--gold); }
-
-  .page-header { background:var(--g-dark); padding:2rem; border-bottom:3px solid var(--gold-dark); }
-  .page-header-inner { max-width:1080px; margin:0 auto; }
-  .breadcrumb { font-size:12px; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:.8px; margin-bottom:.6rem; }
-  .breadcrumb a { color:rgba(255,255,255,.45); text-decoration:none; }
-  .breadcrumb span { color:var(--gold); }
-  h1 { font-family:'Oswald',sans-serif; font-size:34px; color:#fff; text-transform:uppercase; letter-spacing:2px; }
-  .sub { color:rgba(255,255,255,.66); margin-top:.35rem; }
-
-  .layout { max-width:1080px; margin:0 auto; padding:2.5rem 1.5rem; width:100%; }
-  .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:1rem; }
-  .gallery-item { background:#fff; border:1px solid #ddd8d2; border-radius:10px; overflow:hidden; box-shadow:0 4px 14px rgba(0,0,0,.06); }
-  .gallery-img { width:100%; aspect-ratio:16/10; object-fit:cover; display:block; cursor:zoom-in; }
-  .gallery-title { padding:.8rem 1rem; font-family:'Oswald',sans-serif; text-transform:uppercase; letter-spacing:.8px; color:var(--g-dark); }
-
-  .lightbox {
-    position:fixed; inset:0; background:rgba(0,0,0,.86);
-    display:none; align-items:center; justify-content:center; z-index:999;
-    padding:2rem;
-  }
-  .lightbox.open { display:flex; }
-  .lightbox-img { max-width:min(92vw,1600px); max-height:88vh; object-fit:contain; border-radius:8px; }
-  .lightbox-btn {
-    position:absolute; top:50%; transform:translateY(-50%);
-    border:none; width:52px; height:52px; border-radius:50%;
-    background:rgba(255,255,255,.16); color:#fff; font-size:26px; cursor:pointer;
-  }
-  .lightbox-prev { left:18px; }
-  .lightbox-next { right:18px; }
-  .lightbox-close {
-    position:absolute; top:16px; right:16px; border:none;
-    width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,.16);
-    color:#fff; font-size:26px; cursor:pointer;
-  }
-
-  footer { background:var(--g-darkest); border-top:3px solid var(--gold-dark); padding:1.8rem 2rem; text-align:center; margin-top:auto; }
-  footer p { font-size:12px; color:rgba(255,255,255,.35); text-transform:uppercase; letter-spacing:1px; }
-
-  @media(max-width:700px){ .topbar-nav{display:none;} h1{font-size:28px;} .lightbox-btn{display:none;} }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
